@@ -32,6 +32,12 @@ const questions = [
         }
     },
     {
+        type: 'list',
+        name: 'license',
+        message: 'Select a license for your project',
+        choices: ['Apache 2.0', 'MIT', 'GNU GPL v3', 'Mozilla Public License 2.0']
+    },
+    {
         type: 'input',
         name: 'installation',
         message: 'Provide the installation step for your project. (Required)',
@@ -45,20 +51,109 @@ const questions = [
         },
         default: 'npm install'
     },
+    {
+        type: 'input',
+        name: 'usage',
+        message: 'Provide instructions and examples of usage. (Required)',
+        validate: usageInput => {
+            if (usageInput) {
+                return true;
+            }   else {
+                console.log('Please provide instructions and examples of your project!');
+                return false;
+            }
+        }
+    },
+    {
+        type: 'confirm',
+        name: 'confirmContribution',
+        message: 'Would you like other developers to contribute to your project?',
+        default: true
+    },
+    {
+        type: 'input',
+        name: 'contribution',
+        message: 'Add guidelines for other developers to contribute:',
+        when: ({ confirmContribution }) => {
+            if (confirmContribution) {
+                return true;
+            }   else {
+                return false;
+            }
+        }
+    },
+    {
+        type: 'confirm',
+        name: 'confirmTests',
+        message: 'Would you like to include test instructions?',
+        default: true
+    },
+    {
+        type: 'input',
+        name: 'tests',
+        message: 'Add test instructions here:',
+        when: ({ confirmTests }) => {
+            if (confirmTests) {
+                return true;
+            }   else {
+                return false;
+            }
+        }
+    },
+    {
+        type: 'input',
+        name: 'username',
+        message: 'Enter the your Github username. (Required)',
+        validate: usernameInput => {
+            if (usernameInput) {
+                return true;
+            }   else {
+                console.log('Please enter your Github username');
+                return false;
+            }
+        }
+    },
+    {
+        type: 'input',
+        name: 'link',
+        message: 'Enter your Github profile link. (Required)',
+        validate: linkInput => {
+            if (linkInput) {
+                return true;
+            }   else {
+                console.log('Please enter your Github profile link');
+                return false;
+            }
+        }
+    },
+    {
+        type: 'input',
+        name: 'email',
+        message: 'Enter your email address for contact purposes. (Required)',
+        validate: emailInput => {
+            if (emailInput) {
+                return true;
+            }   else {
+                console.log('Please enter your email address');
+                return false;
+            }
+        }
+    },
+    
 ];
 
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {
     fs.writeFile(fileName, data, function(error){
-      if( error) {console.log(error); }
-      
-      console.log("read me generated sucess");
+    if( error) {console.log(error); }
+    
+    console.log("readme generated success");
     })
 }
 
 // TODO: Create a function to initialize app
 function init() {
-    console.log("welcome to readme generator");
+    console.log("Welcome to ReadMe.md generator!");
     inquirer.prompt(questions)
     .then(answers => {
         console.log("user answers;", answers);
