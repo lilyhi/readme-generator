@@ -35,7 +35,7 @@ const questions = [
         type: 'list',
         name: 'license',
         message: 'Select a license for your project',
-        choices: ['Apache 2.0', 'MIT', 'GNU GPL v3', 'Mozilla Public License 2.0']
+        choices: ['Apache 2.0', 'MIT', 'GNU GPL v3', 'Mozilla Public License 2.0','None']
     },
     {
         type: 'input',
@@ -109,19 +109,6 @@ const questions = [
                 return true;
             }   else {
                 console.log('Please enter your Github username');
-                return false;
-            }
-        }
-    },
-    {
-        type: 'input',
-        name: 'link',
-        message: 'Enter your Github profile link. (Required)',
-        validate: linkInput => {
-            if (linkInput) {
-                return true;
-            }   else {
-                console.log('Please enter your Github profile link');
                 return false;
             }
         }
