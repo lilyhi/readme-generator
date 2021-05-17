@@ -73,13 +73,53 @@ function renderLicenseSection(license) {
       limitations under the License.\n\n`;
       break;
     case "MIT":
-      licenseSection = '';
+      licenseSection = `Copyright <YEAR> <COPYRIGHT HOLDER>
+
+      Permission is hereby granted, free of charge, to any person obtaining a 
+      copy of this software and associated documentation files (the "Software"), 
+      to deal in the Software without restriction, including without limitation 
+      the rights to use, copy, modify, merge, publish, distribute, sublicense, 
+      and/or sell copies of the Software, and to permit persons to whom the Software 
+      is furnished to do so, subject to the following conditions:
+      
+      The above copyright notice and this permission notice shall be included in all 
+      copies or substantial portions of the Software.
+      
+      THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, 
+      INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A 
+      PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT 
+      HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF 
+      CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE 
+      OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\n\n`;
       break;
     case "GNU GPL v3": 
-    licenseSection = '';
+    licenseSection = ` Copyright (C) <year>  <name of author>
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <https://www.gnu.org/licenses/>.\n\n`;
       break;
     case "Mozilla Public License 2.0":
-      licenseSection = '';
+      licenseSection = `Covered Software is provided under this License on 
+      an “as is” basis, without warranty of any kind, either expressed, 
+      implied, or statutory, including, without limitation, warranties that 
+      the Covered Software is free of defects, merchantable, fit for a 
+      particular purpose or non-infringing. The entire risk as to the quality 
+      and performance of the Covered Software is with You. Should any Covered 
+      Software prove defective in any respect, You (not any Contributor) 
+      assume the cost of any necessary servicing, repair, or correction. 
+      This disclaimer of warranty constitutes an essential part of this License. 
+      No use of any Covered Software is authorized under this License except 
+      under this disclaimer.\n\n`;
       break;
       default: 
       licenseSection ='\n'; 
@@ -107,7 +147,7 @@ function generateMarkdown(data) {
 
   ## License
 
-  Link to License : ${renderLicenseLink(data.license)}
+  Link to License (if applicable) : ${renderLicenseLink(data.license)}
   \n
   ${renderLicenseSection(data.license)}
 
